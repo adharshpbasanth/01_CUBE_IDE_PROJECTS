@@ -1,0 +1,6 @@
+Third_party/SEGGER/SEGGER/SEGGER_RTT_printf.o: \
+ ../Third_party/SEGGER/SEGGER/SEGGER_RTT_printf.c \
+ ../Third_party/SEGGER/SEGGER/SEGGER_RTT.h \
+ C:/Users/adhar/STM32Cube/01_CUBE_IDE_PROJECTS/001_TASKS_FREEROTS/Third_party/SEGGER/Config/SEGGER_RTT_Conf.h
+../Third_party/SEGGER/SEGGER/SEGGER_RTT.h:
+C:/Users/adhar/STM32Cube/01_CUBE_IDE_PROJECTS/001_TASKS_FREEROTS/Third_party/SEGGER/Config/SEGGER_RTT_Conf.h:

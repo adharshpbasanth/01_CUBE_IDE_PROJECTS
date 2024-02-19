@@ -1,0 +1,4 @@
+1682239457187	Delete resource 'stm32f411_drivers/drivers/Inc/stm32f411xx_gpio_driver'
+1682505368658	Delete resource 'stm32f411_drivers/Src/syscalls.c'
+1682505373187	Delete resource 'stm32f411_drivers/Src/main.c'
+1682505377177	Delete resource 'stm32f411_drivers/Src/sysmem.c'

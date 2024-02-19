@@ -1,0 +1,203 @@
+/*
+ * stm32f411xx_gpio_driver.c
+ *
+ *  Created on: 23-Apr-2023
+ *      Author: ad
+ */
+
+#include "stm32f411xx_gpio_driver.h"
+
+//peripheral clock setup
+
+/******************************************************************************************************************
+ * @fn				- GPIO_PeriClockControl
+ *
+ * @brief			-
+ *
+ * @param[in]		-
+ * @param[in]		-
+ * @param[in]		-
+ *
+ * @return			- none
+ *
+ * @note			- none
+ ********************************************************************************************************************/
+
+void GPIO_PeriClockcontrol(GPIO_RegDef_t *pGPIOx, uint8_t EnorDi)
+{
+	if(EnorDi == ENABLE)
+	{
+		if(pGPIOx == GPIOA)
+		{
+			GPIOA_PCLK_EN();
+		}
+		else if(pGPIOx == GPIOB)
+		{
+			GPIOB_PCLK_EN();
+		}
+		else if(pGPIOx == GPIOC)
+		{
+			GPIOC_PCLK_EN();
+		}
+		else if(pGPIOx == GPIOD)
+		{
+			GPIOD_PCLK_EN();
+		}
+		else if(pGPIOx == GPIOE)
+		{
+			GPIOE_PCLK_EN();
+		}
+		else if(pGPIOx == GPIOH)
+		{
+			GPIOH_PCLK_EN();
+		}
+	}
+	else if(pGPIOx == GPIOA)
+	{
+		GPIOA_PCLK_DI();
+	}
+	else if(pGPIOx == GPIOB)
+	{
+		GPIOB_PCLK_DI();
+	}
+	else if(pGPIOx == GPIOC)
+	{
+		GPIOC_PCLK_DI();
+	}
+	else if(pGPIOx == GPIOD)
+	{
+		GPIOD_PCLK_DI();
+	}
+	else if(pGPIOx == GPIOE)
+	{
+		GPIOE_PCLK_DI();
+	}
+	else if(pGPIOx == GPIOH)
+	{
+		GPIOH_PCLK_DI();
+	}
+
+}
+
+//Init and De- init
+
+/******************************************************************************************************************
+ * @fn				- GPIO_PeriClockControl
+ *
+ * @brief			-
+ *
+ * @param[in]		-
+ * @param[in]		-
+ * @param[in]		-
+ *
+ * @return			- none
+ *
+ * @note			- none
+ ********************************************************************************************************************/
+void GPIO_Init(GPIO_Handle_t *pGPIOHandle)		//GPIO_Handle_t is a structure and now *pGPIOHandle point towards it
+{
+	uint32_t temp=0; //temp.register
+
+	//1. configure the mode of gpio pin
+
+	if(pGPIOHandle->GPIO_PinConfig.GPIO_PinMode <= GPIO_MODE_ANALOG)		//Check the pinmode value is less than 3. if greater than 3 it is interupt type. now we handling the non interupt type
+	{
+		temp = (pGPIOHandle->GPIO_PinConfig.GPIO_PinMode << (2* pGPIOHandle->GPIO_PinConfig.GPIO_PinNumber));	//temp = pin_number*2
+		pGPIOHandle->pGPIOx->MODER &= ~( 0x03 << pGPIOHandle->GPIO_PinConfig.GPIO_PinNumber); // clearing the bits before setting . 0x03 = 0b00000011 left shifted
+		pGPIOHandle->pGPIOx->MODER |= temp; //setting the bits to register
+
+	}
+	else
+	{
+		//this part will be coded later
+	}
+	temp = 0;
+
+	//2. configure the speed
+	temp = (pGPIOHandle->GPIO_PinConfig.GPIO_PinSpeed << (2* pGPIOHandle->GPIO_PinConfig.GPIO_PinNumber));
+	pGPIOHandle->pGPIOx->OSPEEDR &= ~(0x03 << pGPIOHandle->GPIO_PinConfig.GPIO_PinNumber); //clearing
+	pGPIOHandle->pGPIOx->OSPEEDR |= temp; //settings the bits to register
+	temp = 0;
+
+	//3. configure the pupd settings
+	temp = (pGPIOHandle->GPIO_PinConfig.GPIO_PinPuPdcontrol << (2 * pGPIOHandle->GPIO_PinConfig.GPIO_PinNumber));
+	pGPIOHandle->pGPIOx->PUPDR &= ~(0x03 << pGPIOHandle->GPIO_PinConfig.GPIO_PinNumber); //clearing
+	pGPIOHandle->pGPIOx->PUPDR |= temp; //settings the bits to register
+	temp = 0;
+
+	//4. Configure the optype
+	temp = (pGPIOHandle->GPIO_PinConfig.GPIO_PinOPType << pGPIOHandle->GPIO_PinConfig.GPIO_PinNumber);
+	pGPIOHandle->pGPIOx->OTYPER &= ~(0x01 << pGPIOHandle->GPIO_PinConfig.GPIO_PinNumber); //clearing
+	pGPIOHandle->pGPIOx->OTYPER |= temp; //settings the bits to register
+
+	//5. confiqure the alt funtionality
+	if(pGPIOHandle->GPIO_PinConfig.GPIO_PinMode == GPIO_MODE_ALTFN)
+	{
+	//Configure the alternate function register.
+	uint8_t temp1, temp2;
+	temp1 = pGPIOHandle->GPIO_PinConfig.GPIO_PinNumber / 8; //helps to select ALTFN[0] AND ALTFN[1]
+	temp2 = pGPIOHandle->GPIO_PinConfig.GPIO_PinNumber % 8;	//PIN_NUMBER %(mode) 8 - identifyies the pin number within the 32 bit register
+	pGPIOHandle->pGPIOx->AFR[temp1] &= ~(0xF << (4*temp2)); //clearing
+	pGPIOHandle->pGPIOx->AFR[temp1] |= (pGPIOHandle->GPIO_PinConfig.GPIO_PinAltFunMode << ( 4 * temp2));
+	}
+}
+
+void GPIO_DeInit(GPIO_RegDef_t *pGPIOx)
+{
+	if(pGPIOx == GPIOA)
+	{
+		GPIOA_REG_RESET();
+	}
+	else if(pGPIOx == GPIOB)
+	{
+		GPIOB_REG_RESET();
+	}
+	else if(pGPIOx == GPIOC)
+	{
+		GPIOC_REG_RESET();
+	}
+	else if(pGPIOx == GPIOD)
+	{
+		GPIOD_REG_RESET();
+	}
+	else if(pGPIOx == GPIOE)
+	{
+		GPIOE_REG_RESET();
+	}
+	else if(pGPIOx == GPIOH)
+	{
+		GPIOH_REG_RESET();
+	}
+}
+
+//Data read and write
+uint8_t GPIO_ReadFromInputPin(GPIO_RegDef_t *pGPIOx, uint8_t PinNumber)
+{
+
+}
+uint16_t GPIO_ReadFromInputPort(GPIO_RegDef_t *pGPIOx)
+{
+
+}
+void GPIO_WriteToOutputPin(GPIO_RegDef_t *pGPIOx, uint8_t PinNumber, uint8_t Value)
+{
+
+}
+void GPIO_WriteToOutputPort(GPIO_RegDef_t *pGPIOx, uint16_t Value)
+{
+
+}
+void GPIO_ToffleOutputPort(GPIO_RegDef_t *pGPIOx, uint8_t PinNumber)
+{
+
+}
+
+//IRQ Configuration and ISR handling
+void GPIO_IRQConfig(uint8_t IRQNumber, uint8_t IRQPriority, uint8_t EnorDi)
+{
+
+}
+void GPIO_IRQHandling(int8_t PinNumber)
+{
+
+}

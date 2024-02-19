@@ -1,0 +1,40 @@
+2023-04-18 22:01:53,448 [ERROR] ConfigurationRetriever:142 - IOException on connection: sw-center.st.com
+2023-04-18 22:01:53,523 [ERROR] ConfigurationRetriever:142 - IOException on connection: sw-center.st.com
+2023-04-18 22:01:53,524 [ERROR] ConfigurationRetriever:142 - IOException on connection: sw-center.st.com
+2023-04-18 22:01:53,901 [INFO] McuFinderGlobals:66 - Set McuFinderConnectedMode to true
+2023-04-18 22:01:53,906 [INFO] ApiDb:448 - Save user favorites file /home/ad/.stm32cubeide/favorites.mcus.txt: 0 item(s)
+2023-04-18 22:01:53,907 [INFO] ApiDb:452 - User favorites MCUs=[]
+2023-04-18 22:01:53,915 [INFO] ApiDb:448 - Save user favorites file /home/ad/.stm32cubeide/favorites.boards.txt: 1 item(s)
+2023-04-18 22:01:53,916 [INFO] ApiDb:452 - User favorites Boards=[STM32F411E-DISCO]
+2023-04-18 22:19:26,093 [ERROR] ConfigurationRetriever:142 - IOException on connection: sw-center.st.com
+2023-04-18 22:19:26,095 [ERROR] ConfigurationRetriever:142 - IOException on connection: sw-center.st.com
+2023-04-18 22:19:26,101 [ERROR] ConfigurationRetriever:142 - IOException on connection: sw-center.st.com
+2023-04-18 23:37:41,640 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] java.io.IOException: Protocol error
+2023-04-18 23:37:41,642 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 	at java.base/java.io.FileOutputStream.writeBytes(Native Method)
+2023-04-18 23:37:41,643 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 	at java.base/java.io.FileOutputStream.write(FileOutputStream.java:354)
+2023-04-18 23:37:41,646 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 	at java.base/sun.nio.cs.StreamEncoder.writeBytes(StreamEncoder.java:233)
+2023-04-18 23:37:41,647 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 	at java.base/sun.nio.cs.StreamEncoder.implFlushBuffer(StreamEncoder.java:312)
+2023-04-18 23:37:41,648 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 	at java.base/sun.nio.cs.StreamEncoder.implFlush(StreamEncoder.java:316)
+2023-04-18 23:37:41,649 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 	at java.base/sun.nio.cs.StreamEncoder.flush(StreamEncoder.java:153)
+2023-04-18 23:37:41,650 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 	at java.base/java.io.OutputStreamWriter.flush(OutputStreamWriter.java:251)
+2023-04-18 23:37:41,650 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 	at java.base/java.io.BufferedWriter.flush(BufferedWriter.java:257)
+2023-04-18 23:37:41,651 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 	at org.eclipse.cdt.internal.core.CDTLogWriter.closeLogFile(CDTLogWriter.java:68)
+2023-04-18 23:37:41,652 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 	at org.eclipse.cdt.internal.core.CDTLogWriter.shutdown(CDTLogWriter.java:136)
+2023-04-18 23:37:41,652 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 	at org.eclipse.cdt.core.CCorePlugin.stop(CCorePlugin.java:379)
+2023-04-18 23:37:41,653 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 	at org.eclipse.osgi.internal.framework.BundleContextImpl$3.run(BundleContextImpl.java:870)
+2023-04-18 23:37:41,653 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 	at org.eclipse.osgi.internal.framework.BundleContextImpl$3.run(BundleContextImpl.java:1)
+2023-04-18 23:37:41,654 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 	at java.base/java.security.AccessController.doPrivileged(Native Method)
+2023-04-18 23:37:41,655 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 	at org.eclipse.osgi.internal.framework.BundleContextImpl.stop(BundleContextImpl.java:862)
+2023-04-18 23:37:41,656 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 	at org.eclipse.osgi.internal.framework.EquinoxBundle.stopWorker0(EquinoxBundle.java:1046)
+2023-04-18 23:37:41,658 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 	at org.eclipse.osgi.internal.framework.EquinoxBundle$EquinoxModule.stopWorker(EquinoxBundle.java:376)
+2023-04-18 23:37:41,660 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 	at org.eclipse.osgi.container.Module.doStop(Module.java:660)
+2023-04-18 23:37:41,662 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 	at org.eclipse.osgi.container.Module.stop(Module.java:521)
+2023-04-18 23:37:41,663 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.decStartLevel(ModuleContainer.java:1888)
+2023-04-18 23:37:41,664 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1763)
+2023-04-18 23:37:41,664 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 	at org.eclipse.osgi.container.SystemModule.stopWorker(SystemModule.java:275)
+2023-04-18 23:37:41,665 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 	at org.eclipse.osgi.internal.framework.EquinoxBundle$SystemBundle$EquinoxSystemModule.stopWorker(EquinoxBundle.java:208)
+2023-04-18 23:37:41,666 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 	at org.eclipse.osgi.container.Module.doStop(Module.java:660)
+2023-04-18 23:37:41,667 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 	at org.eclipse.osgi.container.Module.stop(Module.java:521)
+2023-04-18 23:37:41,668 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 	at org.eclipse.osgi.container.SystemModule.stop(SystemModule.java:207)
+2023-04-18 23:37:41,669 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 	at org.eclipse.osgi.internal.framework.EquinoxBundle$SystemBundle$EquinoxSystemModule$1.run(EquinoxBundle.java:226)
+2023-04-18 23:37:41,670 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 	at java.base/java.lang.Thread.run(Thread.java:829)

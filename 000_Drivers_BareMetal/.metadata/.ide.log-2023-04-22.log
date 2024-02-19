@@ -1,0 +1,37 @@
+2023-04-22 14:36:25,212 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] java.io.IOException: Protocol error
+2023-04-22 14:36:25,218 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 	at java.base/java.io.FileOutputStream.writeBytes(Native Method)
+2023-04-22 14:36:25,219 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 	at java.base/java.io.FileOutputStream.write(FileOutputStream.java:354)
+2023-04-22 14:36:25,228 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 	at java.base/sun.nio.cs.StreamEncoder.writeBytes(StreamEncoder.java:233)
+2023-04-22 14:36:25,230 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 	at java.base/sun.nio.cs.StreamEncoder.implFlushBuffer(StreamEncoder.java:312)
+2023-04-22 14:36:25,231 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 	at java.base/sun.nio.cs.StreamEncoder.implFlush(StreamEncoder.java:316)
+2023-04-22 14:36:25,233 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 	at java.base/sun.nio.cs.StreamEncoder.flush(StreamEncoder.java:153)
+2023-04-22 14:36:25,235 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 	at java.base/java.io.OutputStreamWriter.flush(OutputStreamWriter.java:251)
+2023-04-22 14:36:25,236 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 	at java.base/java.io.BufferedWriter.flush(BufferedWriter.java:257)
+2023-04-22 14:36:25,236 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 	at org.eclipse.cdt.internal.core.CDTLogWriter.closeLogFile(CDTLogWriter.java:68)
+2023-04-22 14:36:25,236 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 	at org.eclipse.cdt.internal.core.CDTLogWriter.shutdown(CDTLogWriter.java:136)
+2023-04-22 14:36:25,237 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 	at org.eclipse.cdt.core.CCorePlugin.stop(CCorePlugin.java:379)
+2023-04-22 14:36:25,237 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 	at org.eclipse.osgi.internal.framework.BundleContextImpl$3.run(BundleContextImpl.java:870)
+2023-04-22 14:36:25,238 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 	at org.eclipse.osgi.internal.framework.BundleContextImpl$3.run(BundleContextImpl.java:1)
+2023-04-22 14:36:25,238 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 	at java.base/java.security.AccessController.doPrivileged(Native Method)
+2023-04-22 14:36:25,239 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 	at org.eclipse.osgi.internal.framework.BundleContextImpl.stop(BundleContextImpl.java:862)
+2023-04-22 14:36:25,239 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 	at org.eclipse.osgi.internal.framework.EquinoxBundle.stopWorker0(EquinoxBundle.java:1046)
+2023-04-22 14:36:25,240 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 	at org.eclipse.osgi.internal.framework.EquinoxBundle$EquinoxModule.stopWorker(EquinoxBundle.java:376)
+2023-04-22 14:36:25,240 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 	at org.eclipse.osgi.container.Module.doStop(Module.java:660)
+2023-04-22 14:36:25,241 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 	at org.eclipse.osgi.container.Module.stop(Module.java:521)
+2023-04-22 14:36:25,241 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.decStartLevel(ModuleContainer.java:1888)
+2023-04-22 14:36:25,242 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1763)
+2023-04-22 14:36:25,242 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 	at org.eclipse.osgi.container.SystemModule.stopWorker(SystemModule.java:275)
+2023-04-22 14:36:25,242 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 	at org.eclipse.osgi.internal.framework.EquinoxBundle$SystemBundle$EquinoxSystemModule.stopWorker(EquinoxBundle.java:208)
+2023-04-22 14:36:25,243 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 	at org.eclipse.osgi.container.Module.doStop(Module.java:660)
+2023-04-22 14:36:25,243 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 	at org.eclipse.osgi.container.Module.stop(Module.java:521)
+2023-04-22 14:36:25,244 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 	at org.eclipse.osgi.container.SystemModule.stop(SystemModule.java:207)
+2023-04-22 14:36:25,244 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 	at org.eclipse.osgi.internal.framework.EquinoxBundle$SystemBundle$EquinoxSystemModule$1.run(EquinoxBundle.java:226)
+2023-04-22 14:36:25,246 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 	at java.base/java.lang.Thread.run(Thread.java:829)
+2023-04-22 14:37:18,527 [INFO] Activator:176 - 
+
+
+2023-04-22 14:37:18,530 [INFO] Activator:177 - !SESSION log4j initialized
+2023-04-22 14:37:27,035 [INFO] LogOutputStream:77 - [STDOUT_REDIRECT] 
+2023-04-22 14:37:49,030 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+2023-04-22 14:37:49,031 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] SLF4J: Defaulting to no-operation (NOP) logger implementation
+2023-04-22 14:37:49,032 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.

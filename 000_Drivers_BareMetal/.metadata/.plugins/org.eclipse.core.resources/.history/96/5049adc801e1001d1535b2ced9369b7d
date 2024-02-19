@@ -1,0 +1,172 @@
+/*
+ * stm32f411xx.h
+ *
+ *  Created on: Apr 18, 2023
+ *      Author: ad
+ */
+/*NOTE : 1. user upercase for macro names
+ 	 	 2. use prefix ( HAL_... ) helps to identify this macro is from which layer
+ 	 	 3. In this project, it is suggested to use DRV_XXXX - this avoid using the same name some other file*/
+
+#ifndef INC_STM32F411XX_H_
+#define INC_STM32F411XX_H_
+
+#include <stdint.h>
+
+/******************************************************************************************************************
+ -----------------------BASE ADDRESS OF FLASH AND SRAM MEMORIES--------------------------------------------
+ ***********************************************************************************************************************/
+#define FLASH_BASEADDR 	0x08000000U  //address should always keep as unsigned. use ul - unsinged long
+#define SRAM1_BASEADDR 	0x20000000U  //get this information easily from microcontroller specifications document
+//#define SRAM2_BASEADDR
+#define ROM 			0x1FFF0000U //system memory is called ROM
+#define SRAM 			SRAM1_BASEADDR
+
+/******************************************************************************************************************
+ -----------------------AHBx AND APBx BUS PERIPHERAL BASE ADDRESSES--------------------------------------------
+ ***********************************************************************************************************************/
+#define PERIPH_BASEADDR		0x40000000U  //Peripheral base address
+#define APB1PERIPH_BASEADDR	PERIPH_BASE  //APB1
+#define APB2PERIPH_BASEADDR	0x40010000U  //APB2
+#define AHB1PERIPH_BASEADDR	0x40020000U  //AHB1
+#define AHB2PERIPH_BASEADDR	0x50000000U  //AHB2
+
+/******************************************************************************************************************
+ -----------------------BASE ADDRESS OF PERIPHERALS WHICH ARE HANGING ON AHB1 BUS--------------------------------------------
+ ***********************************************************************************************************************/
+#define GPIOA_BASEADDR	(AHB1PERIPH_BASE + 0x0000)  //GPIOA
+#define GPIOB_BASEADDR	(AHB1PERIPH_BASE + 0x0400)  //GPIOB
+#define GPIOC_BASEADDR	(AHB1PERIPH_BASE + 0x0800)  //GPIOC
+#define GPIOD_BASEADDR	(AHB1PERIPH_BASE + 0x0C00)  //GPIOD
+#define GPIOE_BASEADDR	(AHB1PERIPH_BASE + 0x1000)  //GPIOE
+#define GPIOH_BASEADDR	(AHB1PERIPH_BASE + 0x1C00)  //GPIOH
+#define RCC_BASEADDR	(RCC_BASEADDR + 0x3800)		//RCC
+
+/******************************************************************************************************************
+ -----------------------BASE ADDRESS OF PERIPHERALS WHICH ARE HANGING ON APB1 BUS--------------------------------------------
+ ***********************************************************************************************************************/
+#define I2C1_BASEADDR (APB1PERIPH_BASE + 0x5400)  	//I2C1
+#define I2C2_BASEADDR (APB1PERIPH_BASE + 0x5800)  	//I2C2
+#define I2C3_BASEADDR (APB1PERIPH_BASE + 0x5C00)  	//I2C3
+
+#define SPI2_BASEADDR (APB1PERIPH_BASE + 0x3800)  	//SPI2
+#define SPI3_BASEADDR (APB1PERIPH_BASE + 0x3C00)	//SPI3
+
+#define USART2_BASEADDR (APB1PERIPH_BASE + 0x4400)  //USART2
+
+/******************************************************************************************************************
+ -----------------------BASE ADDRESS OF PERIPHERALS WHICH ARE HANGING ON APB2 BUS--------------------------------------------
+ ***********************************************************************************************************************/
+#define USART1_BASEADDR (AHB2PERIPH_BASEADDR + 0x1000)	//USART1
+#define USART6_BASEADDR (AHB2PERIPH_BASEADDR + 0x1400)	//USART6
+
+#define SPI1_BASEADDR (AHB2PERIPH_BASEADDR + 0x3000)	//SPI1
+#define SPI4_BASEADDR (AHB2PERIPH_BASEADDR + 0x3400)	//SPI4
+#define SPI5_BASEADDR (AHB2PERIPH_BASEADDR + 0x5000)	//SPI5
+
+
+/******************************************************************************************************************
+ -----------------------PERIPHERAL REGISTER DEFINITION STRUCTURES--------------------------------------------
+ ***********************************************************************************************************************/
+
+typedef struct			//Every address incremented by 32bit - (uint32_t)
+{
+	volatile uint32_t MODER;	//offset = 0x00; use volatile - GPIO is highly volatile
+	volatile uint32_t OTYPER;	//offset = 0x04
+	volatile uint32_t OSPEEDR;	//offset = 0x08
+	volatile uint32_t PUPDR;	//offset = 0x0C
+	volatile uint32_t IDR;		//offset = 0x10
+	volatile uint32_t ODR;		//offset = 0x14
+	volatile uint32_t BSRR;		//offset = 0x18
+	volatile uint32_t LCKR;		//offset = 0x1C
+	volatile uint32_t AFR[2];	//offset = 0x20; AFR[1] = AFRL & AFR[2] = AFRH
+
+}GPIO_RegDef_t; //GPIOA_REGISTERS
+
+typedef struct
+{
+	volatile uint32_t CR;			//offset = 0x00;
+	volatile uint32_t PLLCFGR;		//offset = 0x04;
+	volatile uint32_t CFGR;			//offset = 0x08;
+	volatile uint32_t CIR;			//offset = 0x0C;
+	volatile uint32_t AHB1RSTR;		//offset = 0x10;
+	volatile uint32_t AHB2RSTR;		//offset = 0x14;
+	volatile uint32_t RESERVED1[2];	//offset = 0x18;
+	volatile uint32_t APB1RSTR;		//offset = 0x20;
+	volatile uint32_t APB2RSTR;		//offset = 0x24;
+	volatile uint32_t RESERVED2[2];	//offset = 0x28;
+	volatile uint32_t AHB1ENR;		//offset = 0x30;
+	volatile uint32_t AHB2ENR;		//offset = 0x34;
+	volatile uint32_t RESERVED3[2];	//offset = 0x38;
+	volatile uint32_t APB1ENR;		//offset = 0x40;
+	volatile uint32_t APB2ENR;		//offset = 0x44;
+	volatile uint32_t RESERVED4[2];	//offset = 0x48;
+	volatile uint32_t AHB1LPENR;	//offset = 0x50;
+	volatile uint32_t AHB2LPENR;	//offset = 0x54;
+	volatile uint32_t RESERVED5[2];	//offset = 0x58;
+	volatile uint32_t APB1LPENR;	//offset = 0x60;
+	volatile uint32_t APB2LPENR;	//offset = 0x64;
+	volatile uint32_t RESERVED6[2];	//offset = 0x68;
+	volatile uint32_t BDCR;			//offset = 0x70;
+	volatile uint32_t CSR;			//offset = 0x74;
+	volatile uint32_t RESERVED7[2];	//offset = 0x78;
+	volatile uint32_t SSCGR;		//offset = 0x80;
+	volatile uint32_t PLLI2SCFGR;	//offset = 0x84;
+	volatile uint32_t RESERVED;		//offset = 0x88;
+	volatile uint32_t DCKCFGR;		//offset = 0x8C;
+}RCC_RegDef_t; //RCC_REGISTER
+
+
+/******************************************************************************************************************
+ -----------------------TYPECASTING GPIOX TO BASEADDRESS----------
+ ***********************************************************************************************************************/
+#define GPIOA ((GPIO_RegDef_t*)GPIOA_BASEADDR) //This type cast the GPIOA_BASEADDR as structure (GPIO_RegDef_t)
+#define GPIOB ((GPIO_RegDef_t*)GPIOB_BASEADDR)
+#define GPIOC ((GPIO_RegDef_t*)GPIOC_BASEADDR)
+#define GPIOD ((GPIO_RegDef_t*)GPIOD_BASEADDR)
+#define GPIOE ((GPIO_RegDef_t*)GPIOE_BASEADDR)
+#define GPIOH ((GPIO_RegDef_t*)GPIOH_BASEADDR)
+
+#define RCC ((RCC_RegDef_t*)RCC_BASEADDR)
+
+/******************************************************************************************************************
+ -----------------------CLOCK ENABLE MACROS FOR GPIOx----------
+ ***********************************************************************************************************************/
+#define GPIOA_PCLK_EN()		( RCC ->AHB1ENR |= ( 1 << 0))
+#define GPIOB_PCLK_EN()		( RCC ->AHB1ENR |= ( 1 << 1))
+#define GPIOC_PCLK_EN()		( RCC ->AHB1ENR |= ( 1 << 2))
+#define GPIOD_PCLK_EN()		( RCC ->AHB1ENR |= ( 1 << 3))
+#define GPIOE_PCLK_EN()		( RCC ->AHB1ENR |= ( 1 << 4))
+#define GPIOH_PCLK_EN()		( RCC ->AHB1ENR |= ( 1 << 7))
+
+/******************************************************************************************************************
+ -----------------------CLOCK ENABLE MACROS FOR I2Cx----------
+ ***********************************************************************************************************************/
+#define I2C1_PCLK_EN()		( RCC ->APB1ENR |= ( 1 << 21))
+#define I2C2_PCLK_EN()		( RCC ->APB1ENR |= ( 1 << 22))
+#define I2C3_PCLK_EN()		( RCC ->APB1ENR |= ( 1 << 23))
+
+/******************************************************************************************************************
+ -----------------------CLOCK ENABLE MACROS FOR SPIx----------
+ ***********************************************************************************************************************/
+#define SPI1_PCLK_EN()		( RCC -> APB2ENR |= ( 1 << 12))
+#define SPI2_PCLK_EN()		( RCC -> APB1ENR |= ( 1 << 14))
+#define SPI3_PCLK_EN()		( RCC -> APB1ENR |= ( 1 << 15))
+#define SPI4_PCLK_EN()		( RCC -> APB2ENR |= ( 1 << 13))
+#define SPI5_PCLK_EN()		( RCC -> APB2ENR |= ( 1 << 20))
+
+/******************************************************************************************************************
+ -----------------------CLOCK ENABLE MACROS FOR USARTx----------
+ ***********************************************************************************************************************/
+#define USART1_PCLK_EN()		( RCC -> APB2ENR |= ( 1 << 4))
+#define USART2_PCLK_EN()		( RCC -> APB1ENR |= ( 1 << 5))
+#define USART6_PCLK_EN()		( RCC -> APB2ENR |= ( 1 << 5))
+
+
+/******************************************************************************************************************
+ -----------------------CLOCK ENABLE MACROS FOR SYSCFG----------
+ ***********************************************************************************************************************/
+#define SYSCFG_PCLK_EN()		( RCC -> APB2ENR |= ( 1 << 14))
+
+
+#endif /* INC_STM32F411XX_H_ */
